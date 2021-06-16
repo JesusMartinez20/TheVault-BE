@@ -9,15 +9,15 @@
 
         $conexion = mysqli_connect('localhost','root','');
         
-        if(!$conexion){            
+        if(!$conexion){
             die('La conexion no se ha podido realizar.'.mysqli_error());
         } else{
-            
+                    
             mysqli_select_db($conexion,"thevault");
             
-            $query = "INSERT INTO usuario VALUES ('$username',now(),'$nombre','$contrasena','$fecha_nac','$correo',$avatar)";
+            $actualizar = "UPDATE usuario SET nombre = '$nombre', contrasena = '$contrasena', fecha_nacimiento = '$fecha_nac', correo = '$correo', avatar=$avatar WHERE username = '$username'";
 
-            mysqli_query($conexion,$query);
+            mysqli_query($conexion,$actualizar);
 
             mysqli_close($conexion);
         }
