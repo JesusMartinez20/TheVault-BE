@@ -7,7 +7,7 @@
     } else {
         mysqli_select_db($connection, "thevault");
 
-        $query = "SELECT nombre, duracion, pais, imagen, YEAR(fecha_estreno) AS fecha, 
+        $query = "SELECT nombre, duracion, pais, imagen, fecha_estreno AS fecha, 
                         CAST(AVG(comentarios.calificacion) AS DECIMAL(3, 2)) AS calificacion
                     FROM pelicula
                     JOIN comentarios ON comentarios.id_pelicula = pelicula.id

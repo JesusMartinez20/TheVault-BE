@@ -17,7 +17,7 @@
                             (SELECT COUNT(id) FROM comentarios WHERE id_pelicula=pelicula.id) AS comentarios
                         FROM pelicula 
                         LEFT JOIN premio ON pelicula.id=premio.id_pelicula 
-                        LEFT JOIN comentarios ON pelicula.id=comentarios.id_pelicula;";
+                        LEFT JOIN comentarios ON pelicula.id=comentarios.id_pelicula GROUP BY pelicula.id;";
 
             $resultado = mysqli_query($conexion,$consulta) or die (mysqli_error());
             

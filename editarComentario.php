@@ -1,6 +1,6 @@
 <?php
     $put = json_decode(file_get_contents("php://input"));
-    $connection = mysqli_connect("127.0.0.1", "root", "");
+    $connection = mysqli_connect("localhost", "root", "");
 
     if (!$connection) {
         die('La conexion no se ha podido realizar.'.mysqli_error());
