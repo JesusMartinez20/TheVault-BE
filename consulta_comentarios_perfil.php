@@ -8,7 +8,7 @@
                     
             mysqli_select_db($conexion,"thevault");
             
-            $busqueda = "SELECT * FROM comentarios WHERE usuario = '$username'";
+            $busqueda = "SELECT comentarios.id, pelicula.nombre,comentarios.titulo,comentarios.calificacion,comentarios.opinion,pelicula.imagen FROM comentarios INNER JOIN pelicula ON comentarios.id_pelicula = pelicula.id WHERE usuario = '$username'";
 	
             $resultado = mysqli_query($conexion,$busqueda) or die (mysqli_error());
             

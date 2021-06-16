@@ -8,7 +8,7 @@
                     
             mysqli_select_db($conexion,"thevault");
             
-            $busqueda = "SELECT username, fecha_registro, nombre, fecha_nacimiento, correo FROM usuario where username= '$username'";
+            $busqueda = "SELECT username, fecha_registro, nombre, contrasena, fecha_nacimiento, correo, avatar FROM usuario where username= '$username'";
 		
             $resultado = mysqli_query($conexion,$busqueda) or die (mysqli_error());
             

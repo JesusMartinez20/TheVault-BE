@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.1
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 15-06-2021 a las 23:43:18
--- Versión del servidor: 10.4.8-MariaDB
--- Versión de PHP: 7.3.11
+-- Tiempo de generación: 16-06-2021 a las 17:08:40
+-- Versión del servidor: 10.4.14-MariaDB
+-- Versión de PHP: 7.4.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -43,7 +42,8 @@ CREATE TABLE `comentarios` (
 --
 
 INSERT INTO `comentarios` (`id`, `titulo`, `opinion`, `calificacion`, `fecha`, `usuario`, `id_pelicula`) VALUES
-(1, 'Que wena pelicula', 'Ufff, es mi pelicula favorita', 5, '2021-06-14', 'Jessusu20', 1);
+(1, 'Que wena pelicula', 'Ufff, es mi pelicula favorita', 5, '2021-06-14', 'Jessusu20', 1),
+(2, 'Me encanto', 'Es una gran experiencia', 4, '2021-06-16', 'luisf', 2);
 
 -- --------------------------------------------------------
 
@@ -157,7 +157,9 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`username`, `fecha_registro`, `nombre`, `contrasena`, `fecha_nacimiento`, `correo`, `avatar`) VALUES
-('Jessusu20', '2021-06-14', 'Jesus Martinez', '1234', '0000-00-00', 'jesusumarcor20@gmail.com', 1);
+('Jessusu20', '2021-06-14', 'Jesus Martinez', '1234', '0000-00-00', 'jesusumarcor20@gmail.com', 1),
+('luisf', '2021-06-16', 'Luis Felipe', '1234', '2000-03-14', 'luisfgaravil@gmail.com', 1),
+('Paco', '2021-06-16', 'Alberto', '12345', '2000-01-29', 'nose1@gmail.com', 1);
 
 --
 -- Índices para tablas volcadas
@@ -212,7 +214,7 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `comentarios`
 --
 ALTER TABLE `comentarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `participacion`
