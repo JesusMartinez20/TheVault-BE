@@ -1,5 +1,5 @@
 <?php
-        $id=$_GET['id'];
+        $nombre=$_GET['nombre'];
         $conexion = mysqli_connect('localhost','root','');
         
         if(!$conexion){
@@ -19,7 +19,7 @@
                         FROM pelicula 
                         LEFT JOIN premio ON pelicula.id=premio.id_pelicula 
                         LEFT JOIN comentarios ON pelicula.id=comentarios.id_pelicula 
-                        WHERE pelicula.id=$id
+                        WHERE pelicula.nombre LIKE '%$nombre%'
                         GROUP BY pelicula.id;";
 
             $resultado = mysqli_query($conexion,$consulta) or die (mysqli_error());
