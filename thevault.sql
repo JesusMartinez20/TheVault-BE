@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 4.9.1
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 16-06-2021 a las 17:08:40
--- Versión del servidor: 10.4.14-MariaDB
--- Versión de PHP: 7.4.9
+-- Tiempo de generación: 17-06-2021 a las 07:34:02
+-- Versión del servidor: 10.4.8-MariaDB
+-- Versión de PHP: 7.3.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -43,7 +44,7 @@ CREATE TABLE `comentarios` (
 
 INSERT INTO `comentarios` (`id`, `titulo`, `opinion`, `calificacion`, `fecha`, `usuario`, `id_pelicula`) VALUES
 (1, 'Que wena pelicula', 'Ufff, es mi pelicula favorita', 5, '2021-06-14', 'Jessusu20', 1),
-(2, 'Me encanto', 'Es una gran experiencia', 4, '2021-06-16', 'luisf', 2);
+(2, 'Me encanto', 'Me gusto mucho la musica y el final!', 4, '2021-06-17', 'Jessusu20', 2);
 
 -- --------------------------------------------------------
 
@@ -65,7 +66,34 @@ CREATE TABLE `participacion` (
 INSERT INTO `participacion` (`id`, `rol`, `id_pelicula`, `id_staff`) VALUES
 (1, 'Director', 1, 1),
 (2, 'Actor', 1, 2),
-(3, 'Actor', 1, 3);
+(3, 'Actor', 1, 3),
+(4, 'Actor', 2, 4),
+(5, 'Director', 2, 5),
+(6, 'Actor', 2, 6),
+(7, 'Actor', 3, 7),
+(8, 'Actor', 3, 8),
+(9, 'Actor', 3, 9),
+(10, 'Actor', 4, 10),
+(11, 'Actor', 4, 11),
+(12, 'Actor', 4, 12),
+(13, 'Actor', 5, 13),
+(14, 'Actor', 5, 14),
+(15, 'Actor', 6, 15),
+(16, 'Actor', 6, 16),
+(17, 'Actor', 6, 17),
+(18, 'Actor', 7, 18),
+(19, 'Actor', 7, 19),
+(20, 'Actor', 7, 20),
+(21, 'Actor', 8, 21),
+(22, 'Actor', 8, 22),
+(23, 'Actor', 9, 23),
+(24, 'Actor', 9, 24),
+(25, 'Actor', 9, 25),
+(26, 'Actor', 10, 26),
+(27, 'Actor', 10, 27),
+(28, 'Actor', 10, 28),
+(29, 'Actor', 5, 11),
+(30, 'Actor', 8, 4);
 
 -- --------------------------------------------------------
 
@@ -89,7 +117,14 @@ CREATE TABLE `pelicula` (
 INSERT INTO `pelicula` (`id`, `nombre`, `duracion`, `pais`, `imagen`, `fecha_estreno`) VALUES
 (1, 'Pulp Fiction', 178, 'Estados Unidos', 'https://cdn.shopify.com/s/files/1/0265/2769/4934/products/pulp_fiction_ver2_xxlg_530x@2x.jpg?v=1579934456', 1994),
 (2, 'Taxi Driver', 114, 'Estados Unidos', 'https://images-na.ssl-images-amazon.com/images/I/51TBx9tzHFL._AC_.jpg', 1976),
-(3, 'The Godfather', 178, 'Estados Unidos', 'https://movieposters2.com/images/1535670-b.jpg', 1972);
+(3, 'The Godfather', 178, 'Estados Unidos', 'https://movieposters2.com/images/1535670-b.jpg', 1972),
+(4, 'Children of Men', 114, 'Reino Unido', 'https://formalshark.co.uk/wp-content/uploads/2017/03/Children-Of-Men-poster-1.jpg', 2006),
+(5, 'Boogie Nights', 156, 'Estados Unidos', 'https://images-na.ssl-images-amazon.com/images/I/51d4CX4-KkL._AC_.jpg', 1997),
+(6, 'The Departed', 151, 'Estados Unidos', 'https://images-na.ssl-images-amazon.com/images/I/51cjgP9KO7L._AC_.jpg', 2006),
+(7, 'Trainspotting', 95, 'Reino Unido', 'https://i.pinimg.com/originals/4a/77/3b/4a773b665f2cd746de7f08fc0cb3b79f.jpg', 1996),
+(8, 'Goodfellas', 148, 'Estados Unidos', 'https://images-na.ssl-images-amazon.com/images/I/51rOnIjLqzL._AC_SY450_.jpg', 1990),
+(9, 'Inglourious Basterds', 153, 'Estados Unidos', 'https://m.media-amazon.com/images/I/51Ro7n9T2fL._AC_.jpg', 2009),
+(10, 'Amores Perros', 155, 'M?xico', 'https://m.media-amazon.com/images/M/MV5BMjQxMWJhMzMtMzllZi00NzMwLTllYjktNTcwZmU4ZmU3NTA0XkEyXkFqcGdeQXVyMTAzMDM4MjM0._V1_.jpg', 2000);
 
 -- --------------------------------------------------------
 
@@ -111,7 +146,40 @@ CREATE TABLE `premio` (
 --
 
 INSERT INTO `premio` (`id`, `categoria`, `fecha`, `lugar`, `academia`, `id_pelicula`) VALUES
-(1, 'Mejor guion original', '0000-00-00', 'Angeles, California', 'Premios Oscar', 1);
+(1, 'Mejor guion original', '0000-00-00', 'Angeles, California', 'Premios Oscar', 1),
+(2, 'Mejor actriz de reparto', '0000-00-00', '', 'Premios BAFTA', 2),
+(3, 'Mejor musica original', '0000-00-00', '', 'Premios BAFTA', 2),
+(4, 'Palma de Oro', '0000-00-00', '', 'Festival de Cine de Cannes', 2),
+(5, 'Mejor pelicula', '0000-00-00', '', 'Premios Oscar', 3),
+(6, 'Mejor actor', '0000-00-00', '', 'Premios Oscar', 3),
+(7, 'Mejor guion adaptado', '0000-00-00', '', 'Premios Oscar', 3),
+(8, 'Mejor pelicula - Drama', '0000-00-00', '', 'Globos de Oro', 3),
+(9, 'Mejor director', '0000-00-00', '', 'Globos de Oro', 3),
+(10, 'Mejor actor - Drama', '0000-00-00', '', 'Globos de Oro', 3),
+(11, 'Mejor guion', '0000-00-00', '', 'Globos de Oro', 3),
+(12, 'Mejor banda sonora', '0000-00-00', '', 'Globos de Oro', 3),
+(13, 'Mejor musica original', '0000-00-00', '', 'Premios BAFTA', 3),
+(14, 'Mejor fotografia', '0000-00-00', '', 'ASC', 4),
+(15, 'Mejor actor de reparto', '0000-00-00', '', 'Globos de Oro', 5),
+(16, 'Mejor pelicula', '0000-00-00', '', 'Premios Oscar', 6),
+(17, 'Mejor director', '0000-00-00', '', 'Premios Oscar', 6),
+(18, 'Mejor guion adaptado', '0000-00-00', '', 'Premios Oscar', 6),
+(19, 'Mejor montaje', '0000-00-00', '', 'Premios Oscar', 6),
+(20, 'Mejor director', '0000-00-00', '', 'Globos de Oro', 6),
+(21, 'Mejor guion adaptado', '0000-00-00', '', 'Premios BAFTA', 7),
+(22, 'Mejor pelicula', '0000-00-00', '', 'Festival Internacional de Cine de Seattle', 7),
+(23, 'Mejor actor de reparto', '0000-00-00', '', 'Premios Oscar', 8),
+(24, 'Mejor pelicula', '0000-00-00', '', 'Premios BAFTA', 8),
+(25, 'Mejor director', '0000-00-00', '', 'Premios BAFTA', 8),
+(26, 'Mejor guion adaptado', '0000-00-00', '', 'Premios BAFTA', 8),
+(27, 'Mejor montaje', '0000-00-00', '', 'Premios BAFTA', 8),
+(28, 'Mejor dise?o de vestuario', '0000-00-00', '', 'Premios BAFTA', 8),
+(29, 'Mejor actor de reparto', '0000-00-00', '', 'Premios Oscar', 9),
+(30, 'Mejor actor de reparto', '0000-00-00', '', 'Globos de Oro', 9),
+(31, 'Mejor actor de reparto', '0000-00-00', '', 'Premios BAFTA', 9),
+(32, 'Mejor pelicula en lengua no inglesa', '0000-00-00', '', 'Premios BAFTA', 10),
+(33, 'Premio de la cr?tica', '0000-00-00', '', 'Festival de Cine de Cannes', 10),
+(34, 'Mejor pelicula', '0000-00-00', '', 'Festival Internacional de Cine de Tokio', 10);
 
 -- --------------------------------------------------------
 
@@ -124,17 +192,43 @@ CREATE TABLE `staff` (
   `nombre` varchar(50) DEFAULT NULL,
   `nacinalidad` varchar(30) DEFAULT NULL,
   `fecha_nacimiento` date DEFAULT NULL,
-  `sexo` char(2) DEFAULT NULL
+  `sexo` char(2) DEFAULT NULL,
+  `imagen` varchar(300) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `staff`
 --
 
-INSERT INTO `staff` (`id`, `nombre`, `nacinalidad`, `fecha_nacimiento`, `sexo`) VALUES
-(1, 'Quentin Tarantino', 'Estados Unidos', '0000-00-00', 'M'),
-(2, 'Samuel L. Jackson', 'Estados Unidos', '0000-00-00', 'M'),
-(3, 'John Travolta', 'Estados Unidos', '0000-00-00', 'M');
+INSERT INTO `staff` (`id`, `nombre`, `nacinalidad`, `fecha_nacimiento`, `sexo`, `imagen`) VALUES
+(1, 'Quentin Tarantino', 'Estados Unidos', '0000-00-00', 'M', NULL),
+(2, 'Samuel L. Jackson', 'Estados Unidos', '0000-00-00', 'M', 'https://upload.wikimedia.org/wikipedia/commons/a/a9/Samuel_L._Jackson_2019_by_Glenn_Francis.jpg'),
+(3, 'John Travolta', 'Estados Unidos', '0000-00-00', 'M', 'https://upload.wikimedia.org/wikipedia/commons/4/4f/John_Travolta_Cannes_2018.jpg'),
+(4, 'Robert De Niro', 'Estados Unidos', '0000-00-00', 'M', 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/Robert_De_Niro_Cannes_2016.jpg/220px-Robert_De_Niro_Cannes_2016.jpg'),
+(5, 'Martin Scorsese', 'Estados Unidos', '1942-11-17', 'M', 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Martin_Scorsese_Berlinale_2010_%28cropped%29.jpg/220px-Martin_Scorsese_Berlinale_2010_%28cropped%29.jpg'),
+(6, 'Jodie Foster', 'Estados Unidos', '1962-11-19', 'F', 'https://upload.wikimedia.org/wikipedia/commons/3/3f/Jodie_Foster_C%C3%A9sars_2011_2_%28cropped%29.jpg'),
+(7, 'Al Pacino', 'Estados Unidos', '1940-04-25', 'M', 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Al_Pacino.jpg/220px-Al_Pacino.jpg'),
+(8, 'Marlon Brando', 'Estados Unidos', '1924-04-03', 'M', 'https://www.biografiasyvidas.com/biografia/b/fotos/brando.jpg'),
+(9, 'Diane Keaton', 'Estados Unidos', '1946-01-05', 'F', 'https://upload.wikimedia.org/wikipedia/commons/0/0b/Diane_Keaton_by_Firooz_Zahedi_2.jpg'),
+(10, 'Clive Owen', 'Reino Unido', '1964-10-03', 'M', 'https://m.guiadelocio.com/var/guiadelocio.com/storage/images/cine/personajes/clive-owen/3754464-14-esl-ES/clive-owen.jpg'),
+(11, 'Julianne Moore', 'Estados Unidos', '1960-12-03', 'F', 'https://upload.wikimedia.org/wikipedia/commons/0/03/Julianne_Moore_Cannes_2018_%28tweaked%29.jpg'),
+(12, 'Michael Caine', 'Reino Unido', '1933-03-14', 'M', 'https://upload.wikimedia.org/wikipedia/commons/f/f4/Sir_Michael_Caine%2C_28th_EFA_Awards_2015%2C_Berlin_%28cropped%29.jpg'),
+(13, 'Mark Wahlberg', 'Estados Unidos', '1971-06-05', 'M', 'https://es.web.img3.acsta.net/pictures/17/07/12/16/23/035660.jpg'),
+(14, 'Philip Seymour Hoffman', 'Estados Unidos', '1967-07-23', 'M', 'https://upload.wikimedia.org/wikipedia/commons/f/f5/Philip_Seymour_Hoffman_2011.jpg'),
+(15, 'Leonardo DiCaprio', 'Estados Unidos', '1974-11-11', 'M', 'https://upload.wikimedia.org/wikipedia/commons/4/46/Leonardo_Dicaprio_Cannes_2019.jpg'),
+(16, 'Matt Damon', 'Estados Unidos', '1970-10-08', 'M', 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Damon_cropped.jpg/250px-Damon_cropped.jpg'),
+(17, 'Jack Nicholson', 'Estados Unidos', '1937-04-22', 'M', 'https://upload.wikimedia.org/wikipedia/commons/b/b2/Jack_Nicholson.0920.jpg'),
+(18, 'Ewan McGregor', 'Reino Unido', '1971-03-31', 'M', 'https://static.wikia.nocookie.net/constantinediaries/images/6/6b/Ewan_McGregor.jpg/revision/latest?cb=20190623172118&path-prefix=es'),
+(19, 'Jonny Lee Miller', 'Reino Unido', '1972-11-15', 'M', 'https://static.wikia.nocookie.net/sherlockholmes/images/9/99/JohnnyLeeMiller.jpg/revision/latest?cb=20140117190942&path-prefix=es'),
+(20, 'Ewen Bremner', 'Reino Unido', '1970-12-11', 'M', 'https://cl.buscafs.com/www.tomatazos.com/public/uploads/images/38326/38326_173x231.jpg'),
+(21, 'Joe Pesci', 'Estados Unidos', '1943-02-09', 'M', 'https://r1.abcimg.es/resizer/resizer.php?imagen=https%3A%2F%2Fstatic2.abc.es%2Fmedia%2Fpersonajes%2F000%2F013%2F938%2Fjoe-pesci-1.jpg&nuevoancho=690&medio=abc'),
+(22, 'Ray Liotta', 'Estados Unidos', '1954-12-18', 'M', 'https://i.pinimg.com/originals/bf/4c/2c/bf4c2c0b2bca71466414453e7e0b4f94.jpg'),
+(23, 'Brad Pitt', 'Estados Unidos', '1963-12-18', 'M', 'https://media.fashionnetwork.com/cdn-cgi/image/fit=contain,width=1000,height=1000/m/0d2f/313d/73c9/143a/6875/d46e/d976/bb81/2b1d/b017/b017.jpg'),
+(24, 'Christoph Waltz', 'Austria', '1956-08-04', 'M', 'https://static.wikia.nocookie.net/doblaje/images/2/21/Christoph_waltz_-2019.jpg/revision/latest/top-crop/width/360/height/450?cb=20190816041900&path-prefix=es'),
+(25, 'M?lanie Laurent', 'Francia', '1983-02-21', 'F', 'https://upload.wikimedia.org/wikipedia/commons/5/5d/M%C3%A9lanie_Laurent_C%C3%A9sar_2016_%28cropped%29.jpg'),
+(26, 'Gael Garc?a Bernal', 'M?xico', '1978-11-30', 'M', 'https://upload.wikimedia.org/wikipedia/commons/7/7c/Gael_Garcia_Bernal_2015.jpg'),
+(27, 'Vanessa Bauche', 'M?xico', '1973-02-18', 'F', 'https://upload.wikimedia.org/wikipedia/commons/b/be/MX_MM_CEREMONIA_PEREMIOS_ARIEL_-_35492337790_%28cropped%29.jpg'),
+(28, 'Emilio Echevarr?a', 'M?xico', '1944-07-03', 'M', 'https://images.mubicdn.net/images/cast_member/2357/cache-133949-1613764508/image-w856.jpg?size=800x');
 
 -- --------------------------------------------------------
 
@@ -157,9 +251,11 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`username`, `fecha_registro`, `nombre`, `contrasena`, `fecha_nacimiento`, `correo`, `avatar`) VALUES
+('Chit0mx', '2021-06-17', 'Andres Mercado', '1234', '2000-03-17', 'Chit0mx@gmail.com', 2),
 ('Jessusu20', '2021-06-14', 'Jesus Martinez', '1234', '0000-00-00', 'jesusumarcor20@gmail.com', 1),
-('luisf', '2021-06-16', 'Luis Felipe', '1234', '2000-03-14', 'luisfgaravil@gmail.com', 1),
-('Paco', '2021-06-16', 'Alberto', '12345', '2000-01-29', 'nose1@gmail.com', 1);
+('Luisf', '2021-06-17', 'Felipe Garc?a', '1234', '2000-03-14', 'luisgarav@gmail.com', 1),
+('TheRaven0', '2021-06-17', 'Kevin Medina', '1234', '2000-10-04', 'kevingenial01@gmail.com', 1),
+('VioletUmi', '2021-06-17', 'Claudia Cortes', '1234', '2000-05-03', 'VioletUmi@gmail.com', 2);
 
 --
 -- Índices para tablas volcadas
@@ -220,25 +316,25 @@ ALTER TABLE `comentarios`
 -- AUTO_INCREMENT de la tabla `participacion`
 --
 ALTER TABLE `participacion`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT de la tabla `pelicula`
 --
 ALTER TABLE `pelicula`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de la tabla `premio`
 --
 ALTER TABLE `premio`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT de la tabla `staff`
 --
 ALTER TABLE `staff`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- Restricciones para tablas volcadas
