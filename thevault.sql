@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 17-06-2021 a las 09:46:05
--- Versión del servidor: 10.4.14-MariaDB
--- Versión de PHP: 7.4.9
+-- Tiempo de generación: 18-11-2021 a las 00:00:59
+-- Versión del servidor: 10.4.20-MariaDB
+-- Versión de PHP: 8.0.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -143,24 +143,25 @@ CREATE TABLE `pelicula` (
   `duracion` smallint(6) DEFAULT NULL,
   `pais` varchar(50) DEFAULT NULL,
   `imagen` varchar(300) DEFAULT NULL,
-  `fecha_estreno` int(11) DEFAULT NULL
+  `fecha_estreno` int(11) DEFAULT NULL,
+  `en_proyeccion` tinyint(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `pelicula`
 --
 
-INSERT INTO `pelicula` (`id`, `nombre`, `duracion`, `pais`, `imagen`, `fecha_estreno`) VALUES
-(1, 'Pulp Fiction', 178, 'Estados Unidos', 'https://cdn.shopify.com/s/files/1/0265/2769/4934/products/pulp_fiction_ver2_xxlg_530x@2x.jpg?v=1579934456', 1994),
-(2, 'Taxi Driver', 114, 'Estados Unidos', 'https://images-na.ssl-images-amazon.com/images/I/51TBx9tzHFL._AC_.jpg', 1976),
-(3, 'The Godfather', 178, 'Estados Unidos', 'https://movieposters2.com/images/1535670-b.jpg', 1972),
-(4, 'Children of Men', 114, 'Reino Unido', 'https://formalshark.co.uk/wp-content/uploads/2017/03/Children-Of-Men-poster-1.jpg', 2006),
-(5, 'Boogie Nights', 156, 'Estados Unidos', 'https://images-na.ssl-images-amazon.com/images/I/51d4CX4-KkL._AC_.jpg', 1997),
-(6, 'The Departed', 151, 'Estados Unidos', 'https://images-na.ssl-images-amazon.com/images/I/51cjgP9KO7L._AC_.jpg', 2006),
-(7, 'Trainspotting', 95, 'Reino Unido', 'https://i.pinimg.com/originals/4a/77/3b/4a773b665f2cd746de7f08fc0cb3b79f.jpg', 1996),
-(8, 'Goodfellas', 148, 'Estados Unidos', 'https://images-na.ssl-images-amazon.com/images/I/51rOnIjLqzL._AC_SY450_.jpg', 1990),
-(9, 'Inglourious Basterds', 153, 'Estados Unidos', 'https://m.media-amazon.com/images/I/51Ro7n9T2fL._AC_.jpg', 2009),
-(10, 'Amores Perros', 155, 'México', 'https://m.media-amazon.com/images/M/MV5BMjQxMWJhMzMtMzllZi00NzMwLTllYjktNTcwZmU4ZmU3NTA0XkEyXkFqcGdeQXVyMTAzMDM4MjM0._V1_.jpg', 2000);
+INSERT INTO `pelicula` (`id`, `nombre`, `duracion`, `pais`, `imagen`, `fecha_estreno`, `en_proyeccion`) VALUES
+(1, 'Pulp Fiction', 178, 'Estados Unidos', 'https://cdn.shopify.com/s/files/1/0265/2769/4934/products/pulp_fiction_ver2_xxlg_530x@2x.jpg?v=1579934456', 1994, 0),
+(2, 'Taxi Driver', 114, 'Estados Unidos', 'https://images-na.ssl-images-amazon.com/images/I/51TBx9tzHFL._AC_.jpg', 1976, 1),
+(3, 'The Godfather', 178, 'Estados Unidos', 'https://movieposters2.com/images/1535670-b.jpg', 1972, 0),
+(4, 'Children of Men', 114, 'Reino Unido', 'https://formalshark.co.uk/wp-content/uploads/2017/03/Children-Of-Men-poster-1.jpg', 2006, 1),
+(5, 'Boogie Nights', 156, 'Estados Unidos', 'https://images-na.ssl-images-amazon.com/images/I/51d4CX4-KkL._AC_.jpg', 1997, 1),
+(6, 'The Departed', 151, 'Estados Unidos', 'https://images-na.ssl-images-amazon.com/images/I/51cjgP9KO7L._AC_.jpg', 2006, 0),
+(7, 'Trainspotting', 95, 'Reino Unido', 'https://i.pinimg.com/originals/4a/77/3b/4a773b665f2cd746de7f08fc0cb3b79f.jpg', 1996, 1),
+(8, 'Goodfellas', 148, 'Estados Unidos', 'https://images-na.ssl-images-amazon.com/images/I/51rOnIjLqzL._AC_SY450_.jpg', 1990, 0),
+(9, 'Inglourious Basterds', 153, 'Estados Unidos', 'https://m.media-amazon.com/images/I/51Ro7n9T2fL._AC_.jpg', 2009, 1),
+(10, 'Amores Perros', 155, 'México', 'https://m.media-amazon.com/images/M/MV5BMjQxMWJhMzMtMzllZi00NzMwLTllYjktNTcwZmU4ZmU3NTA0XkEyXkFqcGdeQXVyMTAzMDM4MjM0._V1_.jpg', 2000, 0);
 
 -- --------------------------------------------------------
 
@@ -293,6 +294,7 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`username`, `fecha_registro`, `nombre`, `contrasena`, `fecha_nacimiento`, `correo`, `avatar`) VALUES
+('admin', '2021-11-17', 'Administrador', '1234', '2021-11-17', 'admin@thevault.com', 2),
 ('Chit0mx', '2021-06-17', 'Andres Mercado', '1234', '2000-03-17', 'Chit0mx@gmail.com', 2),
 ('Jessusu20', '2021-06-14', 'Jesus Martinez', '1234', '2000-07-20', 'jesusumarcor20@gmail.com', 2),
 ('Luisf', '2021-06-17', 'Felipe García', '1234', '2000-03-14', 'luisgarav@gmail.com', 2),
