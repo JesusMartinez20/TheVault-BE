@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 21-11-2021 a las 12:19:25
+-- Tiempo de generación: 21-11-2021 a las 17:41:56
 -- Versión del servidor: 10.4.14-MariaDB
 -- Versión de PHP: 7.4.9
 
@@ -33,6 +33,16 @@ CREATE TABLE `boletos` (
   `id_funcion` int(11) DEFAULT NULL,
   `id_username` varchar(40) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `boletos`
+--
+
+INSERT INTO `boletos` (`id`, `asientos`, `id_funcion`, `id_username`) VALUES
+(9, 4, 1, 'Luisf'),
+(10, 10, 4, 'Luisf'),
+(11, 5, 7, 'Luisf'),
+(12, 7, 8, 'Luisf');
 
 --
 -- Disparadores `boletos`
@@ -114,9 +124,17 @@ CREATE TABLE `funciones` (
 --
 
 INSERT INTO `funciones` (`id`, `horario`, `id_sala`, `id_pelicula`, `asientos_ocupados`) VALUES
-(1, '2021-11-27 14:30:00', 1, 2, 0),
+(1, '2021-11-27 14:30:00', 1, 2, 4),
 (2, '2021-11-27 17:00:00', 1, 2, 0),
-(3, '2021-11-27 18:00:00', 1, 2, 0);
+(3, '2021-11-27 18:00:00', 1, 2, 0),
+(4, '2021-11-28 00:00:00', 2, 2, 10),
+(5, '2021-11-28 13:00:00', 3, 2, 0),
+(6, '2021-11-27 16:45:00', 3, 4, 0),
+(7, '2021-11-27 17:30:00', 1, 4, 5),
+(8, '2021-11-27 20:30:00', 2, 4, 7),
+(9, '2021-11-21 08:46:30', 1, 4, 0),
+(10, '2021-11-21 08:49:00', 1, 4, 0),
+(11, '2021-11-21 08:49:45', 1, 4, 0);
 
 -- --------------------------------------------------------
 
@@ -441,7 +459,7 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `boletos`
 --
 ALTER TABLE `boletos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT de la tabla `comentarios`
@@ -453,7 +471,7 @@ ALTER TABLE `comentarios`
 -- AUTO_INCREMENT de la tabla `funciones`
 --
 ALTER TABLE `funciones`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT de la tabla `participacion`
