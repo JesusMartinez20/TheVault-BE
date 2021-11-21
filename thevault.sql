@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 18-11-2021 a las 00:00:59
--- Versión del servidor: 10.4.20-MariaDB
--- Versión de PHP: 8.0.8
+-- Tiempo de generación: 21-11-2021 a las 11:36:58
+-- Versión del servidor: 10.4.14-MariaDB
+-- Versión de PHP: 7.4.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -20,6 +20,19 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `thevault`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `boletos`
+--
+
+CREATE TABLE `boletos` (
+  `id` int(11) NOT NULL,
+  `asientos` int(11) DEFAULT NULL,
+  `id_funcion` int(11) DEFAULT NULL,
+  `id_username` varchar(40) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -73,6 +86,29 @@ INSERT INTO `comentarios` (`id`, `titulo`, `opinion`, `calificacion`, `fecha`, `
 (29, 'Mi favorita ', 'Desde el primer momento se volvió una de mis favoritas ', 5, '2021-06-17', 'Chit0mx', 7),
 (30, 'Increíble ', 'Tiene uno de los mejores intros de la historia del cine. No necesito decir más. ', 5, '2021-06-17', 'TheRaven0', 7),
 (31, 'Gran trama', 'Te deja al borde del asiento en toda la película. ', 5, '2021-06-17', 'Luisf', 8);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `funciones`
+--
+
+CREATE TABLE `funciones` (
+  `id` int(11) NOT NULL,
+  `horario` datetime DEFAULT NULL,
+  `id_sala` int(11) DEFAULT NULL,
+  `id_pelicula` int(11) DEFAULT NULL,
+  `asientos_ocupados` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `funciones`
+--
+
+INSERT INTO `funciones` (`id`, `horario`, `id_sala`, `id_pelicula`, `asientos_ocupados`) VALUES
+(1, '2021-11-27 14:30:00', 1, 2, 0),
+(2, '2021-11-27 17:00:00', 1, 2, 0),
+(3, '2021-11-27 18:00:00', 1, 2, 0);
 
 -- --------------------------------------------------------
 
@@ -221,6 +257,27 @@ INSERT INTO `premio` (`id`, `categoria`, `fecha`, `lugar`, `academia`, `id_pelic
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `sala`
+--
+
+CREATE TABLE `sala` (
+  `id` int(11) NOT NULL,
+  `capacidad` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `sala`
+--
+
+INSERT INTO `sala` (`id`, `capacidad`) VALUES
+(1, 40),
+(2, 50),
+(3, 35),
+(4, 40);
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `staff`
 --
 
@@ -306,12 +363,28 @@ INSERT INTO `usuario` (`username`, `fecha_registro`, `nombre`, `contrasena`, `fe
 --
 
 --
+-- Indices de la tabla `boletos`
+--
+ALTER TABLE `boletos`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_funcion` (`id_funcion`),
+  ADD KEY `id_username` (`id_username`);
+
+--
 -- Indices de la tabla `comentarios`
 --
 ALTER TABLE `comentarios`
   ADD PRIMARY KEY (`id`),
   ADD KEY `comentarios_ibfk_1` (`usuario`),
   ADD KEY `comentarios_ibfk_2` (`id_pelicula`);
+
+--
+-- Indices de la tabla `funciones`
+--
+ALTER TABLE `funciones`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_sala` (`id_sala`),
+  ADD KEY `id_pelicula` (`id_pelicula`);
 
 --
 -- Indices de la tabla `participacion`
@@ -335,6 +408,12 @@ ALTER TABLE `premio`
   ADD KEY `premio_ibfk_1` (`id_pelicula`);
 
 --
+-- Indices de la tabla `sala`
+--
+ALTER TABLE `sala`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indices de la tabla `staff`
 --
 ALTER TABLE `staff`
@@ -351,10 +430,22 @@ ALTER TABLE `usuario`
 --
 
 --
+-- AUTO_INCREMENT de la tabla `boletos`
+--
+ALTER TABLE `boletos`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT de la tabla `comentarios`
 --
 ALTER TABLE `comentarios`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+
+--
+-- AUTO_INCREMENT de la tabla `funciones`
+--
+ALTER TABLE `funciones`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `participacion`
@@ -375,6 +466,12 @@ ALTER TABLE `premio`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
+-- AUTO_INCREMENT de la tabla `sala`
+--
+ALTER TABLE `sala`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
 -- AUTO_INCREMENT de la tabla `staff`
 --
 ALTER TABLE `staff`
@@ -385,11 +482,25 @@ ALTER TABLE `staff`
 --
 
 --
+-- Filtros para la tabla `boletos`
+--
+ALTER TABLE `boletos`
+  ADD CONSTRAINT `boletos_ibfk_1` FOREIGN KEY (`id_funcion`) REFERENCES `funciones` (`id`),
+  ADD CONSTRAINT `boletos_ibfk_2` FOREIGN KEY (`id_username`) REFERENCES `usuario` (`username`);
+
+--
 -- Filtros para la tabla `comentarios`
 --
 ALTER TABLE `comentarios`
   ADD CONSTRAINT `comentarios_ibfk_1` FOREIGN KEY (`usuario`) REFERENCES `usuario` (`username`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `comentarios_ibfk_2` FOREIGN KEY (`id_pelicula`) REFERENCES `pelicula` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Filtros para la tabla `funciones`
+--
+ALTER TABLE `funciones`
+  ADD CONSTRAINT `funciones_ibfk_1` FOREIGN KEY (`id_sala`) REFERENCES `sala` (`id`),
+  ADD CONSTRAINT `funciones_ibfk_2` FOREIGN KEY (`id_pelicula`) REFERENCES `pelicula` (`id`);
 
 --
 -- Filtros para la tabla `participacion`
