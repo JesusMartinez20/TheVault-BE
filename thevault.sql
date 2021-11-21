@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 21-11-2021 a las 11:36:58
+-- Tiempo de generación: 21-11-2021 a las 12:19:25
 -- Versión del servidor: 10.4.14-MariaDB
 -- Versión de PHP: 7.4.9
 
@@ -33,6 +33,14 @@ CREATE TABLE `boletos` (
   `id_funcion` int(11) DEFAULT NULL,
   `id_username` varchar(40) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Disparadores `boletos`
+--
+DELIMITER $$
+CREATE TRIGGER `trigger_asientosOcupados` AFTER INSERT ON `boletos` FOR EACH ROW UPDATE funciones SET funciones.asientos_ocupados=funciones.asientos_ocupados + NEW.asientos WHERE funciones.id = NEW.id_funcion
+$$
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -433,7 +441,7 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `boletos`
 --
 ALTER TABLE `boletos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `comentarios`
