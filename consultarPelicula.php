@@ -13,7 +13,7 @@
                     JOIN comentarios ON comentarios.id_pelicula = pelicula.id
                     WHERE pelicula.id = '$id'";
 
-        $queryPremios = "SELECT id, categoria, academia
+        $queryPremios = "SELECT id, categoria, academia, lugar, fecha
                             FROM premio
                             WHERE id_pelicula = '$id'";
 
