@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 21-11-2021 a las 17:41:56
+-- Tiempo de generación: 22-11-2021 a las 06:18:57
 -- Versión del servidor: 10.4.14-MariaDB
 -- Versión de PHP: 7.4.9
 
@@ -42,7 +42,9 @@ INSERT INTO `boletos` (`id`, `asientos`, `id_funcion`, `id_username`) VALUES
 (9, 4, 1, 'Luisf'),
 (10, 10, 4, 'Luisf'),
 (11, 5, 7, 'Luisf'),
-(12, 7, 8, 'Luisf');
+(12, 7, 8, 'Luisf'),
+(13, 5, 3, 'Luisf'),
+(14, 2, 17, 'Luisf');
 
 --
 -- Disparadores `boletos`
@@ -126,7 +128,7 @@ CREATE TABLE `funciones` (
 INSERT INTO `funciones` (`id`, `horario`, `id_sala`, `id_pelicula`, `asientos_ocupados`) VALUES
 (1, '2021-11-27 14:30:00', 1, 2, 4),
 (2, '2021-11-27 17:00:00', 1, 2, 0),
-(3, '2021-11-27 18:00:00', 1, 2, 0),
+(3, '2021-11-27 18:00:00', 1, 2, 5),
 (4, '2021-11-28 00:00:00', 2, 2, 10),
 (5, '2021-11-28 13:00:00', 3, 2, 0),
 (6, '2021-11-27 16:45:00', 3, 4, 0),
@@ -134,7 +136,22 @@ INSERT INTO `funciones` (`id`, `horario`, `id_sala`, `id_pelicula`, `asientos_oc
 (8, '2021-11-27 20:30:00', 2, 4, 7),
 (9, '2021-11-21 08:46:30', 1, 4, 0),
 (10, '2021-11-21 08:49:00', 1, 4, 0),
-(11, '2021-11-21 08:49:45', 1, 4, 0);
+(11, '2021-11-21 08:49:45', 1, 4, 0),
+(12, '2021-11-29 11:00:00', 4, 5, 0),
+(13, '2021-11-29 12:00:00', 2, 5, 0),
+(14, '2021-11-29 19:05:00', 2, 5, 0),
+(15, '2021-11-29 21:25:00', 3, 5, 0),
+(16, '2021-11-29 22:15:00', 1, 5, 0),
+(17, '2021-11-29 12:00:00', 3, 7, 2),
+(18, '2021-11-28 16:30:00', 1, 7, 0),
+(19, '2021-11-29 20:45:00', 4, 7, 0),
+(20, '2021-11-29 21:00:00', 2, 7, 0),
+(21, '2021-11-28 12:50:00', 1, 9, 0),
+(22, '2021-11-28 15:30:00', 2, 9, 0),
+(23, '2021-11-29 12:30:00', 1, 9, 0),
+(24, '2021-11-29 21:00:00', 4, 9, 0),
+(25, '2021-11-29 21:00:00', 4, 2, 0),
+(26, '2021-11-30 23:00:00', 3, 9, 0);
 
 -- --------------------------------------------------------
 
@@ -459,7 +476,7 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `boletos`
 --
 ALTER TABLE `boletos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT de la tabla `comentarios`
@@ -471,7 +488,7 @@ ALTER TABLE `comentarios`
 -- AUTO_INCREMENT de la tabla `funciones`
 --
 ALTER TABLE `funciones`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT de la tabla `participacion`
