@@ -7,17 +7,20 @@
     } else {
         mysqli_select_db($connection, "thevault");
 
-        $query = "SELECT nombre, duracion, pais, imagen, fecha_estreno AS fecha, 
+        $query = "SELECT nombre, duracion, pais, imagen, fecha_estreno AS fecha, en_proyeccion, 
                         CAST(AVG(comentarios.calificacion) AS DECIMAL(3, 2)) AS calificacion
                     FROM pelicula
                     JOIN comentarios ON comentarios.id_pelicula = pelicula.id
                     WHERE pelicula.id = '$id'";
 
-        $queryPremios = "SELECT categoria, academia
+        $queryPremios = "SELECT id, categoria, academia
                             FROM premio
                             WHERE id_pelicula = '$id'";
 
-        $queryStaff = "SELECT staff.nombre, participacion.id AS participacion_id, participacion.rol, staff.id AS staff_id
+        $queryStaff = "SELECT staff.nombre, participacion.id AS participacion_id, 
+                        participacion.rol, staff.id AS staff_id,
+                        staff.nacinalidad, staff.fecha_nacimiento,
+                        staff.sexo, staff.imagen 
                         FROM pelicula
                         JOIN participacion ON pelicula.id = participacion.id_pelicula
                         JOIN staff ON participacion.id_staff = staff.id
