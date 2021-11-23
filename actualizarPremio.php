@@ -10,7 +10,7 @@
 
         $actualizar = "UPDATE premio SET
                         categoria = '$put->categoria',
-                        fecha = $put->fecha,
+                        fecha = '$put->fecha',
                         lugar = '$put->lugar',
                         academia = '$put->academia' 
                         WHERE id = $put->id";
